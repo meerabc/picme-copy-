@@ -1,8 +1,12 @@
 import React from 'react'
 
-const Button = ({variant,children}) => {
+const Button = ({variant,onClick,children,type='button'}) => {
   return (
-    <button className={variant==='filled' ? 'filled' : 'outline'}>
+    <button 
+      type={type}
+      className={variant==='filled' ? 'filled' : 'outline'} 
+      onClick={onClick}
+    >
         {children}
     </button>
   )
