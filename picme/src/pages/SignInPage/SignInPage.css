@@ -1,0 +1,54 @@
+.container{
+    display:flex; 
+}
+
+.div{
+    display:flex;
+    justify-content:space-between;
+    font-size:14px;
+    align-items:center;
+    color:var(--gray-200);
+}
+
+.remember-me-div{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.toggle-button{
+    width:32.3px;
+    border-radius:10px;
+    background-color:var(--primary-color);
+}
+
+.toggle-ball{
+    height:15.2px;
+    width:15.2px;
+    border-radius:50%;
+    background-color:var(--secondary-color);;
+    margin:2px;
+}
+
+.or-divider{
+    display:flex;
+    font-size:14px;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.separator-line{
+    width:146px;
+    height:2px;
+}
+
+.sign-up-div{
+    margin:0 auto;
+    font-size:14px;
+}
+
+.sign-up-div > span{
+    color:var(--primary-color);
+    font-weight:bold; 
+}
+

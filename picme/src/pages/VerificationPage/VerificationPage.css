@@ -1,0 +1,7 @@
+.container{
+    display:flex; 
+}
+
+p{
+    line-height:25px;
+}
