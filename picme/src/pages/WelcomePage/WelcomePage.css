@@ -2,3 +2,34 @@
     display:flex; 
 }
 
+.mobile-image>img{
+    width:200px;
+    display:none;
+    margin:0 auto;
+}
+
+@media(max-width:880px){
+    .welcome-page .container{
+        flex-direction:column;
+    }
+    .welcome-page .form-container{
+        margin-top:0;
+    }
+    .welcome-page .form-container>img{
+        display:none;
+    }
+    .welcome-page .mobile-image>img{
+        display:block;
+    }
+    .welcome-page .form-container{
+        background-color:var(--primary-color)
+    }
+    .welcome-page .form-content>h1{
+        color:var(--secondary-color);
+        text-align:center;
+    }
+    .welcome-page .form-content > button{
+        background-color:var(--secondary-color);
+        color:var(--primary-color);
+    } 
+}

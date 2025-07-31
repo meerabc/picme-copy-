@@ -47,8 +47,18 @@
     font-size:14px;
 }
 
+.sign-up-div:hover{
+    text-decoration: underline;
+    cursor:pointer;
+}
+
 .sign-up-div > span{
     color:var(--primary-color);
     font-weight:bold; 
 }
 
+@media(max-width:880px){
+    .container{
+        flex-direction:column;
+    }
+}

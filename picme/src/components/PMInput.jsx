@@ -28,7 +28,8 @@ const PMInput = ({icon, type, placeholder, value, onChange, error}) => {
           </span>
         )}
       </div>
-      {error && <div className='error-msg'>{error}</div>}
+      {/* do not shouw error msg if error value is 'error', only set bordre to red */}
+      {error &&  error!='error' && <div className='error-msg'>{error}</div>}
     </div>
   )
 }

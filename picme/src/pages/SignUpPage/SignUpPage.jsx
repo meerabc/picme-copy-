@@ -9,15 +9,20 @@ import ProfileIcon from '../../assets/icons/ProfileIcon'
 import Line1 from '../../assets/images/Line1.png'
 import Line2 from '../../assets/images/Line2.png'
 import LoginWithButton from '../../components/LoginWithButton'
+import BackButton from '../../components/BackButton'
 import GoogleIcon from '../../assets/icons/GoogleIcon'
 import FaceBookIcon from '../../assets/icons/FaceBookIcon'
 import { validateEmail, validatePassword, validateFullName1To3Words } from '../../utils/helper'
-import { useSearchParams} from 'react-router-dom'
+import { postAPIWithoutAuth } from '../../api/api'
+import { useSearchParams,useNavigate} from 'react-router-dom'
+import { setAccessToken } from '../../utils/localStorage'
+import { SIGNUP_URL } from '../../api/apiUrls'
 import './SignUpPage.css'
 
 const SignUpPage = () => {
 
   const [searchParams]=useSearchParams()
+  const navigate = useNavigate()
   const userType = searchParams.get('type')
 
   //form data state
@@ -106,27 +111,61 @@ const SignUpPage = () => {
       const error = validateField(field,formData[field])
       newErrors[field] = error
       if(error) isValid=false
+    })
     
     setErrors(newErrors)
+    // console.log(errors)
     return isValid
-    })
   }
 
-  function handleSubmit(e){
-     e.preventDefault() 
+  async function handleSubmit(e) {
+    e.preventDefault()
 
-     if (validateForm()) {
-      console.log('Form is valid!')
-      console.log('Form data:', formData)
-      console.log('User type:', userType === '0' ? 'Customer' : 'Photographer')
-      // Here you'll later add API call logic
-    } else {
+    if (!validateForm()) {
       console.log('Form has errors')
+      return
     }
+
+    try {
+     
+      const payload = {
+        full_name: formData.fullName,
+        email: formData.email,
+        password: formData.password,
+        password_confirmation: formData.confirmPassword,
+        type: parseInt(userType) 
+      }
+
+      console.log('Sending signup data:', payload)
+
+      // Make API call
+      const response = await postAPIWithoutAuth(SIGNUP_URL, payload)
+
+      if (response.success) {
+        console.log('Signup successful:', response.data)
+        
+        // Store access token if provided in headers
+        if (response.headers && response.headers.getAuthorization) {
+          await setAccessToken(response.headers.getAuthorization())
+        }
+
+        // Navigate to signin page
+        // navigate('/signin')
+      } else {
+        // Throw error to be caught by catch block
+        throw new Error(response.data?.message || 'Signup failed')
+      }
+    } catch (error) {
+      console.error('Signup error:', error)
+      // You can add user-friendly error handling here if needed
+      // For example: show a toast notification or set a general error state
+    } 
   }
+
 
   return (
     <div className='container'>
+      <BackButton />
       <FormContainer>
         <form onSubmit={handleSubmit} noValidate>
           <h1>Sign Up</h1>
@@ -171,7 +210,9 @@ const SignUpPage = () => {
         </div>
         <LoginWithButton icon={<GoogleIcon/>}>Login with Google</LoginWithButton>
         <LoginWithButton icon={<FaceBookIcon/>}>Login with Facebook</LoginWithButton>
-        <p className='login-div'>Don't have an account?<span> Sign up</span></p>
+        <p className='login-div' onClick={()=>navigate(`/signin?type=${userType}`)}>Already have an account?
+          <span> Log in</span>
+        </p>
       </FormContainer>
       <SideComponent />
     </div>
@@ -180,3 +221,5 @@ const SignUpPage = () => {
 
 
 export default SignUpPage
+
+

@@ -1,6 +1,7 @@
 import FormContainer from '../../components/FormContainer'
 import SideComponent from '../../components/SideComponent'
 import PMButton from '../../components/PMButton'
+import mobileImage from '../../assets/images/mobile-image.png'
 import {useNavigate} from 'react-router-dom'
 import './WelcomePage.css'
 
@@ -15,8 +16,12 @@ const WelcomePage = () => {
   }
 
   return (
-    <div className='container'>
+    <div className='container welcome-page'>
        <FormContainer>
+          {/* initially set to display of none only shown for mobile screens */}
+          <div className='mobile-image'>
+              <img src={mobileImage} alt='main-image' />
+          </div> 
           <h1>Experience Photography In a new Dimension</h1>
           <PMButton variant='filled' onClick={handleCustomerClick}>continue as customer</PMButton>
           <PMButton variant='outline' onClick={handlePhotographerClick}>continue as photographer</PMButton>

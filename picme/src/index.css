@@ -113,12 +113,14 @@ input{
 }
 
 .form-container{
-  width:50vw;
+  min-width:50vw;
+  min-height:100vh;
+  flex-grow:1;
   display:flex;
   align-items:center;
   justify-content:center;
   color:var(--gray-200);
-  margin-top:50px;
+  margin:50px 0 20px 0;
 }
 
 .form-container > img{
@@ -158,4 +160,39 @@ button.login-with-button > svg{
   margin-right:10px;
 }
 
+.back-button{
+  display:none;
+  margin:5px 0 0 5px;
+}
 
+
+@media(max-width:1100px){
+  .side-component{
+  width:40vw;
+  }
+}
+
+@media(max-width:880px){
+  .side-component{
+  width:30vw;
+  }
+}
+
+@media(max-width:740px){
+  .side-component{
+  display:none;
+  }
+  .form-container{
+    flex-direction:column;
+    gap:15px;
+    margin:0;
+  }
+  .form-container > img{
+  position:static;
+  margin:0 auto;
+  width:100px;
+  }
+  .back-button{
+      display:block;
+  }
+}
