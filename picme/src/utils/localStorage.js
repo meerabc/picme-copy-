@@ -13,7 +13,7 @@ export const getAccessToken = async () => {
     return value;
   } catch (e) {
     return null;
-  }
+  } 
 };
 
 export const getRememberME = async () => {

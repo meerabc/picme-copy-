@@ -1,6 +1,7 @@
 import React from 'react'
 import FormContainer from '../../components/FormContainer'
 import SideComponent from '../../components/SideComponent'
+import BackButton from '../../components/BackButton'
 import PMButton from '../../components/PMButton'
 import PMInput from '../../components/PMInput'
 import LockIcon from '../../assets/icons/LockIcon'
@@ -9,21 +10,24 @@ import ProfileIcon from '../../assets/icons/ProfileIcon'
 import Line1 from '../../assets/images/Line1.png'
 import Line2 from '../../assets/images/Line2.png'
 import LoginWithButton from '../../components/LoginWithButton'
-import BackButton from '../../components/BackButton'
 import GoogleIcon from '../../assets/icons/GoogleIcon'
 import FaceBookIcon from '../../assets/icons/FaceBookIcon'
 import { validateEmail, validatePassword, validateFullName1To3Words } from '../../utils/helper'
+import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
 import { postAPIWithoutAuth } from '../../api/api'
-import { useSearchParams,useNavigate} from 'react-router-dom'
-import { setAccessToken } from '../../utils/localStorage'
 import { SIGNUP_URL } from '../../api/apiUrls'
+import { setAccessToken } from '../../utils/localStorage'
 import './SignUpPage.css'
 
 const SignUpPage = () => {
 
   const [searchParams]=useSearchParams()
   const navigate = useNavigate()
+  const location = useLocation()
   const userType = searchParams.get('type')
+
+  //Gets return URL from location state (if user was redirected here)
+  const returnUrl = location.state?.returnUrl || '/dashboard'
 
   //form data state
   const [formData,setFormData] = React.useState(
@@ -129,10 +133,9 @@ const SignUpPage = () => {
     try {
      
       const payload = {
-        full_name: formData.fullName,
+        name: formData.fullName,
         email: formData.email,
         password: formData.password,
-        password_confirmation: formData.confirmPassword,
         type: parseInt(userType) 
       }
 
@@ -149,8 +152,8 @@ const SignUpPage = () => {
           await setAccessToken(response.headers.getAuthorization())
         }
 
-        // Navigate to signin page
-        // navigate('/signin')
+        // Navigate to the expected page
+        navigate(returnUrl)
       } else {
         // Throw error to be caught by catch block
         throw new Error(response.data?.message || 'Signup failed')
@@ -168,7 +171,7 @@ const SignUpPage = () => {
       <BackButton />
       <FormContainer>
         <form onSubmit={handleSubmit} noValidate>
-          <h1>Sign Up</h1>
+          <h1 className='heading'>Sign Up</h1>
           <PMInput 
             type='text' 
             placeholder='Full name' 
@@ -210,7 +213,10 @@ const SignUpPage = () => {
         </div>
         <LoginWithButton icon={<GoogleIcon/>}>Login with Google</LoginWithButton>
         <LoginWithButton icon={<FaceBookIcon/>}>Login with Facebook</LoginWithButton>
-        <p className='login-div' onClick={()=>navigate(`/signin?type=${userType}`)}>Already have an account?
+        <p className='login-div' 
+           onClick={()=>navigate(`/signin?type=${userType}`,{ state: { returnUrl } })}
+        >
+          Already have an account?
           <span> Log in</span>
         </p>
       </FormContainer>

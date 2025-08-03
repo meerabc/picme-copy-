@@ -22,7 +22,7 @@ const WelcomePage = () => {
           <div className='mobile-image'>
               <img src={mobileImage} alt='main-image' />
           </div> 
-          <h1>Experience Photography In a new Dimension</h1>
+          <h1>Experience <span>Photography</span> In a new Dimension</h1>
           <PMButton variant='filled' onClick={handleCustomerClick}>continue as customer</PMButton>
           <PMButton variant='outline' onClick={handlePhotographerClick}>continue as photographer</PMButton>
        </FormContainer>

@@ -8,6 +8,15 @@
     margin:0 auto;
 }
 
+.form-content > h1{
+    text-transform:uppercase;
+    line-height:48px;
+}
+
+.form-content > h1 > span{
+    color:var(--primary-color)
+}
+
 @media(max-width:880px){
     .welcome-page .container{
         flex-direction:column;

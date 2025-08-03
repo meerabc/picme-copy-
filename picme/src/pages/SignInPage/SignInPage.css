@@ -2,6 +2,10 @@
     display:flex; 
 }
 
+.heading{
+   margin-bottom:15px;
+}
+
 .div{
     display:flex;
     justify-content:space-between;
@@ -10,24 +14,8 @@
     color:var(--gray-200);
 }
 
-.remember-me-div{
-    display:flex;
-    align-items:center;
-    gap:5px;
-}
-
-.toggle-button{
-    width:32.3px;
-    border-radius:10px;
-    background-color:var(--primary-color);
-}
-
-.toggle-ball{
-    height:15.2px;
-    width:15.2px;
-    border-radius:50%;
-    background-color:var(--secondary-color);;
-    margin:2px;
+.div > p{
+    color:var(--primary-color)
 }
 
 .or-divider{

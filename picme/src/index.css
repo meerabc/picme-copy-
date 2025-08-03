@@ -24,13 +24,14 @@ html,body{
 }
 
 h1{
-  font-weight:600; 
+  font-weight:500; 
   font-size: 32px;
   line-height:1.2;
   vertical-align: middle;
   color:var(--heading-color)
 }
 
+/* for SideComponent.jsx */
 .side-component{
   display:flex;
   align-items:center;
@@ -44,9 +45,12 @@ h1{
   width:76.5%;
 }
 
+/* for PMButton.jsx */
 button{
   width:345px;
-  padding:15px 0;
+  font-size:16px;
+  font-weight:600;
+  padding:20px 0;
   border-radius:15px;
   font-weight:600;
   cursor:pointer;
@@ -68,6 +72,7 @@ button.outline{
   text-transform:uppercase;
 }
 
+/* for PMInput.jsx */
 .input-div{
   width:345px;
   display:flex;
@@ -107,26 +112,25 @@ input{
 }
 
 .error-msg{
-  color:red;
+  color:#dc3545;
   font-size:12px;
   margin-top:5px;
+  font-weight:500;
 }
 
+/* for FormContainer.jsx */
 .form-container{
+  display:flex;
+  flex-direction:column;
   min-width:50vw;
   min-height:100vh;
   flex-grow:1;
   display:flex;
-  align-items:center;
-  justify-content:center;
+  padding:24px;
   color:var(--gray-200);
-  margin:50px 0 20px 0;
 }
 
 .form-container > img{
-  position:absolute;
-  top:30px;
-  left:30px;
   width:4.75vw;
 }
 
@@ -135,6 +139,9 @@ input{
   flex-direction:column;
   width:345px;
   gap:15px;
+  margin:0 auto;
+  height:100%;
+  justify-content:center;
 }
 
 form{
@@ -143,6 +150,7 @@ form{
   gap:15px;
 }
 
+/* for LoginWithButton.jsx */
 button.login-with-button{
   display:flex;
   align-items:center;
@@ -160,9 +168,46 @@ button.login-with-button > svg{
   margin-right:10px;
 }
 
+/* for BackButton.jsx */
 .back-button{
   display:none;
   margin:5px 0 0 5px;
+}
+
+/* for PMToggle.jsx */
+.toggle-div{
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.toggle-button{
+    width:32.3px;
+    height: 21.2px;
+    border-radius:10px;
+    background-color:var(--gray-100);
+    cursor:pointer;
+    position:relative;
+    transition: background-color 0.3s ease;
+}
+
+.toggle-button.active{
+    background-color:var(--primary-color);
+}
+
+.toggle-ball{
+    height:15.2px;
+    width:15.2px;
+    border-radius:50%;
+    background-color:var(--secondary-color);;
+    left:3px;
+    top:3px;
+    position: absolute;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.toggle-ball.active{
+    transform: translateX(11.1px); /* Move right (32.3px width - 15.2px ball - 4px total margins) */
 }
 
 
