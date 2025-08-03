@@ -1,8 +1,7 @@
 import { useState, useEffect } from 'react'
-import { getAccessToken } from '../utils/localStorage'
+import { getAccessToken, removeAccessToken } from '../utils/localStorage'
 
 export function useAuth() {
-
   const [isAuthenticated, setIsAuthenticated] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
 
@@ -21,5 +20,15 @@ export function useAuth() {
     }
   }
 
-  return { isAuthenticated, isLoading, checkAuthStatus }
+  // Add logout function
+  async function logout() {
+    try {
+      await removeAccessToken()
+      setIsAuthenticated(false)
+    } catch (error) {
+      console.error('Error during logout:', error)
+    }
+  }
+
+  return { isAuthenticated, isLoading, logout }
 }

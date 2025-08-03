@@ -1,11 +1,12 @@
 import React from 'react'
 import { Navigate, useLocation } from 'react-router-dom'
 import { useAuth } from '../hooks/useAuth'
+// import { getAccessToken} from '../utils/localStorage'
 
 const ProtectedRoute = ({ children }) => {
   const { isAuthenticated, isLoading } = useAuth()
 
-  console.log('is Authenticated : ' + isAuthenticated)
+  // console.log('is Authenticated : ' + isAuthenticated)
   const location = useLocation()
 
   // Show loading while checking authentication

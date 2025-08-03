@@ -1,20 +1,26 @@
 import React from 'react'
-import VerificationPage from './pages/VerificationPage'
+// import VerificationPage from './pages/VerificationPage'
 import WelcomePage from './pages/WelcomePage'
 import SignUpPage from './pages/SignUpPage'
 import SignInPage from './pages/SignInPage'
 import ProtectedRoute from './components/ProtectedRoutes'
-import DashBoardPage from './pages/DashBoardPage'
+import PublicRoute from './components/PublicRoute'
+import WelcomeRoute from './components/WelcomeRoute'
+import HomePage from './pages/HomePage'
+import ChatPage from './pages/ChatPage'
+import ProfilePage from './pages/ProfilePage'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 const App = () => {
   return (
     <BrowserRouter>
         <Routes>
-          <Route path='/' element={<WelcomePage />} />
-          <Route path='/signin' element={<SignInPage/>} />
-          <Route path='/signup' element={<SignUpPage/>} />
-          <Route path='/dashboard' element={<ProtectedRoute> <DashBoardPage /> </ProtectedRoute>} />
+          <Route path='/' element={<WelcomeRoute><WelcomePage /></WelcomeRoute>} />
+          <Route path='/signin' element={<PublicRoute><SignInPage/></PublicRoute>} />
+          <Route path='/signup' element={<PublicRoute><SignUpPage/></PublicRoute>} />
+          <Route path='/choose-location' element={<ProtectedRoute> <HomePage /> </ProtectedRoute>} />
+          <Route path='/chat' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
+          <Route path='/profile' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
         </Routes>
     </BrowserRouter>
     

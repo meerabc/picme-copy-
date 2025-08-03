@@ -1,6 +1,6 @@
 import React from 'react'
 
-const DashBoardPage = () => {
+const ProfilePage = () => {
   return (
     <div>
       
@@ -8,4 +8,4 @@ const DashBoardPage = () => {
   )
 }
 
-export default DashBoardPage
+export default ProfilePage
