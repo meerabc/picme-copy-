@@ -1,15 +1,66 @@
 import React from 'react'
 import NavBar from '../../components/NavBar'
-// import mapImg from '../../assets/images/map-img.webp'
 import './ChooseByDate.css'
 import SearchField from '../../components/SearchField'
 import DateSelector from '../../components/DateSelector'
+import PhotographerCard from '../../components/PhotographerCard'
 import LocationIcon from '../../assets/icons/LocationIcon'
 import SearchIcon from '../../assets/icons/SearchIcon'
+import { SEARCH_PHOTOGRAPHER_URL } from '../../api/apiUrls'
+import { getApiWithAuth } from '../../api/api'
 
 const ChooseByDate = () => {
 
-  const [open,setOpen] = React.useState(true)
+  const [open, setOpen] = React.useState(false)
+  const [startDate, setStartDate] = React.useState('')
+  const [endDate, setEndDate] = React.useState('')
+  // Dummy values for latitude and longitude
+  const [latitude] = React.useState('29.780148267560097')
+  const [longitude] = React.useState('-95.3657162519862')
+  const [photographers,setPhotographers] = React.useState([])
+
+  const handleSearch = async () => {
+    console.log('Loading...')
+    try {
+        // Format dates for API (DD-MM-YYYY format)
+        const formatDateForAPI = (dateString) => {
+          if (!dateString) return '' // Return empty string if no date selected
+          const date = new Date(dateString)
+          const day = String(date.getDate()).padStart(2, '0')
+          const month = String(date.getMonth() + 1).padStart(2, '0')
+          const year = date.getFullYear()
+          return `${day}-${month}-${year}`
+        }
+
+        const formattedStartDate = formatDateForAPI(startDate)
+        const formattedEndDate = formatDateForAPI(endDate)
+
+        const apiUrl = `${SEARCH_PHOTOGRAPHER_URL}?latitude=${latitude}&longitude=${longitude}&start_date=${formattedStartDate}&end_date=${formattedEndDate}`
+        
+        const response = await getApiWithAuth(apiUrl)
+        
+        if (response.success) {
+          console.log('Photographers data:', response.data)
+          setPhotographers(response.data)
+          setOpen(true) // Open the side container
+        } else {
+          console.log('Error fetching photographers:', response.data)
+          setPhotographers([])
+        }
+    } catch (error) {
+        console.error('Search error:', error)
+        setPhotographers([])
+    }
+  }
+
+  // React.useEffect(() => {
+  // console.log("Updated photographers:", photographers);
+  // }, [photographers]);
+
+  const photographerCardElements = photographers.map(photographer=>
+    <PhotographerCard key={photographer.id} item={photographer}/>
+  )
+  
   return (
     <div className='choose-by-date-page container'>
       <NavBar />
@@ -19,18 +70,37 @@ const ChooseByDate = () => {
             <div className='left-div'>
               <SearchField />
               <div className='date-selection-container'>
-                <DateSelector text='From' />
-                <DateSelector text='To'/>               
+                <DateSelector 
+                   text='From'
+                   value={startDate}
+                   onChange={(e) => setStartDate(e.target.value)} />
+                <DateSelector 
+                   text='To'
+                   value={endDate}
+                   onChange={(e) => setEndDate(e.target.value)}/>               
               </div>
             </div>
             <div className='right-div'>
               <div className='icon-container'><LocationIcon /></div>
-              <div className='icon-container'><SearchIcon /></div>
+              <div className='icon-container' onClick={handleSearch}><SearchIcon /></div>
             </div>
           </div>
         </div>
         {open && 
-          <div className='side-container'></div>     
+          <div className='side-container'>
+            <h1>Photographers Lists</h1>
+            <p>Find the best photographers in your area for your next event!</p>
+            {/* <CategorySelectionField /> */}
+            {photographers.length > 0 ? (
+                <div className='cards-container'>
+                  {photographerCardElements}
+                </div>
+              ) : (
+                <p>No Photographer Found</p>
+              )
+            }
+
+          </div>     
         }
       </div>
     </div>
