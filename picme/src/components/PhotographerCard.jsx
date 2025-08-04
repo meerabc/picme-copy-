@@ -1,10 +1,18 @@
 import React from 'react'
 import avatar from '../assets/images/avatar.png'
+import { useNavigate } from 'react-router-dom'
 import RatingsIcon from '../assets/icons/RatingsIcon'
 
 const PhotographerCard = ({item}) => {
+
+  const navigate = useNavigate()
+
+  const handleCardClick = () => {
+    navigate(`/photographer/portfolio/${item.photographer.id}`)
+  }
+
   return (
-    <div className='photographer-card'>
+    <div className='photographer-card'  onClick={handleCardClick}>
       <div className='avatar-container'>
         <img src={avatar} alt='profile-pic' />
       </div>

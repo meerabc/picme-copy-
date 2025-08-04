@@ -1,0 +1,16 @@
+.photographer-portfolio .main-container{
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    padding:32px;
+}
+
+.photographer-portfolio .main-container > img{
+    width:500px;
+    height:500px;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    padding:32px;
+}

@@ -3,14 +3,14 @@
     height:100vh;
 }
 
-.main-container{
+.choose-by-date-page .main-container{
     display:flex;
     padding:24px;
     width:100%;
     height:100%;
 }
 
-.map-container{
+.choose-by-date-page .map-container{
     background-image : url('/map-img.webp');
     width:100%;
     height:100%;
@@ -19,18 +19,18 @@
     padding:15px;
 }
 
-.search-container{
+.choose-by-date-page .search-container{
     display:flex;
     gap:15px;
 }
 
-.left-div,.right-div{
+.choose-by-date-page .left-div,.right-div{
     display:flex;
     flex-direction:column;
     gap:10px;
 }
 
-.icon-container{
+.choose-by-date-page .icon-container{
     display:flex;
     justify-content:center;
     align-items:center;
@@ -41,32 +41,32 @@
     border:1px solid var(--gray-100);
 }
 
-.icon-container>svg{
+.choose-by-date-page .icon-container>svg{
    height:22px;
    width:22px;
    cursor:pointer;
 }
 
-.date-selection-container{
+.choose-by-date-page .date-selection-container{
     display:flex;
     justify-content:space-between;
 }
 
-.side-container{
+.choose-by-date-page .side-container{
     width:650px;
     height:100%;
     background-color:var(--secondary-color);
     padding:10px 30px;
 }
 
-.side-container > p{
+.choose-by-date-page .side-container > p{
     font-size:14px;
     font-weight:400;
     color:var(--gray-200 );
     margin:5px 0 15px 0;
 }
 
-.cards-container{
+.choose-by-date-page .cards-container{
     display:flex;
     justify-content:space-between;
 }
