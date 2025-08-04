@@ -9,6 +9,9 @@ import WelcomeRoute from './components/WelcomeRoute'
 import HomePage from './pages/HomePage'
 import ChatPage from './pages/ChatPage'
 import ProfilePage from './pages/ProfilePage'
+import ChooseByDate from './pages/ChooseByDate'
+import ChooseByName from './pages/ChooseByName'
+import ChooseByCategory from './pages/ChooseByCategory'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 const App = () => {
@@ -19,9 +22,11 @@ const App = () => {
           <Route path='/signin' element={<PublicRoute><SignInPage/></PublicRoute>} />
           <Route path='/signup' element={<PublicRoute><SignUpPage/></PublicRoute>} />
           <Route path='/choose-location' element={<ProtectedRoute> <HomePage /> </ProtectedRoute>} />
-          <Route path='/choose-location-by-date' element={<ProtectedRoute> <Location /> </ProtectedRoute>} />
-          <Route path='/find-by-name' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
-          <Route path='/find-by-category' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
+          <Route path='/choose-location-by-date' element={<ProtectedRoute> <ChooseByDate /> </ProtectedRoute>} />
+          <Route path='/find-by-name' element={<ProtectedRoute> <ChooseByName/> </ProtectedRoute>} />
+          <Route path='/find-by-category' element={<ProtectedRoute> <ChooseByCategory /> </ProtectedRoute>} />
+          <Route path='/chat' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
+          <Route path='/profile' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
         </Routes>
     </BrowserRouter>
     

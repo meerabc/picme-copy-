@@ -1,0 +1,59 @@
+.choose-by-date-page.container{
+    width:100vw;
+    height:100vh;
+}
+
+.main-container{
+    display:flex;
+    padding:24px;
+    width:100%;
+    height:100%;
+}
+
+.map-container{
+    background-image : url('/map-img.webp');
+    width:100%;
+    height:100%;
+    display:flex;
+    justify-content:flex-end;
+    padding:15px;
+}
+
+.search-container{
+    display:flex;
+    gap:15px;
+}
+
+.left-div,.right-div{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+
+.icon-container{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:51px;
+    width:51px;
+    background-color: var(--secondary-color);
+    border-radius:10px;
+    border:1px solid var(--gray-100);
+}
+
+.icon-container>svg{
+   height:22px;
+   width:22px;
+}
+
+.date-selection-container{
+    display:flex;
+    justify-content:space-between;
+}
+
+.side-container{
+    width:650px;
+    height:100%;
+    background-color:var(--secondary-color);
+}
+

@@ -1,10 +1,11 @@
 import React from 'react'
-import 'ChooseByCategory.css'
+import NavBar from '../../components/NavBar'
+import './ChooseByCategory.css'
 
 const ChooseByCategory = () => {
   return (
     <div>
-      
+      <NavBar />
     </div>
   )
 }
