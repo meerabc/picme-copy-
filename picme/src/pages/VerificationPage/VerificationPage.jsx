@@ -15,7 +15,7 @@ import './VerificationPage.css'
 
 const VerificationPage = () => {
   return (
-    <div className='container'>
+    <div className='verification-page container'>
        <FormContainer>
           <h1>Verification</h1>
           <p>We’ve send you the verification<br/> code on abc@gmail.com</p>

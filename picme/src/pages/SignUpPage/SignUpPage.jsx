@@ -27,7 +27,7 @@ const SignUpPage = () => {
   const userType = searchParams.get('type')
 
   //Gets return URL from location state (if user was redirected here)
-  const returnUrl = location.state?.returnUrl || '/dashboard'
+  const returnUrl = location.state?.returnUrl || '/choose-location'
 
   //form data state
   const [formData,setFormData] = React.useState(
@@ -167,7 +167,7 @@ const SignUpPage = () => {
 
 
   return (
-    <div className='container'>
+    <div className='sign-up-page container'>
       <BackButton />
       <FormContainer>
         <form onSubmit={handleSubmit} noValidate>

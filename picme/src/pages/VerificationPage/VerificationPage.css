@@ -1,7 +1,7 @@
-.container{
+.verification-page.container{
     display:flex; 
 }
 
-p{
+.verification-page p{
     line-height:25px;
 }

@@ -1,12 +1,12 @@
-.container{
+.sign-up-page.container{
     display:flex; 
 }
 
-.heading{
+.sign-up-page .heading{
    margin-bottom:15px;
 }
 
-.div{
+.sign-up-page .div{
     display:flex;
     justify-content:space-between;
     font-size:14px;
@@ -14,35 +14,35 @@
     color:var(--gray-200);
 }
 
-.or-divider{
+.sign-up-page .or-divider{
     display:flex;
     font-size:14px;
     align-items:center;
     justify-content:space-between;
 }
 
-.separator-line{
+.sign-up-page .separator-line{
     width:146px;
     height:2px;
 }
 
-.login-div{
+.sign-up-page .login-div{
     margin:0 auto;
     font-size:14px;
 }
 
-.login-div:hover{
+.sign-up-page .login-div:hover{
     text-decoration: underline;
     cursor:pointer;
 }
 
-.login-div > span{
+.sign-up-page .login-div > span{
     color:var(--primary-color);
     font-weight:bold;
 }
 
 @media(max-width:880px){
-    .container{
+    .sign-up-page .container{
         flex-direction:column;
     }
 }

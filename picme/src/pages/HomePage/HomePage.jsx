@@ -1,13 +1,51 @@
-import React from 'react'
-import { useAuth } from '../../hooks/useAuth'
-import { useNavigate } from 'react-router-dom'
-import PMButton from '../../components/PMButton'
+
 import ProfileIcon from '../../assets/icons/ProfileIcon'
 import ChatIcon from '../../assets/icons/ChatIcon'
 import HomeIcon from '../../assets/icons/HomeIcon'
-// import MailIcon from '../../assets/icons/MailIcon'
+import NavBar from '../../components/NavBar'
+import PMButton from '../../components/PMButton'
+import locationImg from '../../assets/images/location_img.png'
+import {useNavigate} from 'react-router-dom'
+import './HomePage.css'
 
 const HomePage = () => {
+
+  const navigate=useNavigate()
+
+  return (
+    <div className='home-page container'>
+      <NavBar />
+      <div className='main-container'>
+        <div className='search-location-div'>
+          <div className='img-container'><img src={locationImg} alt='map-img' /></div>
+          <h2>Search Location</h2>
+          <p>Find the best photographers in your area for your next event!</p>
+          <PMButton 
+              variant='filled' 
+              onClick={()=>navigate('/choose-location-by-date')}>
+                choose location
+          </PMButton>
+          <PMButton 
+             variant='outline'
+             onClick={()=>navigate('/find-by-name')}>
+               find by name
+          </PMButton>
+          <PMButton 
+             variant='outline'
+             onClick={()=>navigate('/find-by-category')}>
+               find by category
+          </PMButton>
+        </div>
+      </div>
+    
+    </div>
+  )
+}
+
+export default HomePage
+
+
+
 
   // const { logout } = useAuth()
   // const navigate = useNavigate()
@@ -17,14 +55,4 @@ const HomePage = () => {
   //   navigate('/')
   // }
 
-  return (
-    <div style={{display:'flex', margin:'15px', alignItems: 'center' , justifyContent:'center', width:'100px',backgroundColor:'blue'}}>
-      <ProfileIcon />
-      <ChatIcon />
-      <HomeIcon />
-      {/* <PMButton onClick={handleLogout} > Logout </PMButton> */}
-    </div>
-  )
-}
-
-export default HomePage
+  /* <PMButton onClick={handleLogout} > Logout </PMButton> */

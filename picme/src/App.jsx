@@ -19,8 +19,9 @@ const App = () => {
           <Route path='/signin' element={<PublicRoute><SignInPage/></PublicRoute>} />
           <Route path='/signup' element={<PublicRoute><SignUpPage/></PublicRoute>} />
           <Route path='/choose-location' element={<ProtectedRoute> <HomePage /> </ProtectedRoute>} />
-          <Route path='/chat' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
-          <Route path='/profile' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
+          <Route path='/choose-location-by-date' element={<ProtectedRoute> <Location /> </ProtectedRoute>} />
+          <Route path='/find-by-name' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
+          <Route path='/find-by-category' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
         </Routes>
     </BrowserRouter>
     
