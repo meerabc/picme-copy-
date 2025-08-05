@@ -2,11 +2,13 @@ import React from 'react'
 import { useParams } from 'react-router-dom'
 import NavBar from '../../components/NavBar'
 import BackButton from '../../components/BackButton'
-import RatingsIcon from '../../assets/icons/RatingsIcon'
-import avatar from '../../assets/images/avatar.png'
+import PMButton from '../../components/PMButton'
+import PackageIcon from '../../assets/icons/PackageIcon'
+import PortfolioIcon from '../../assets/icons/PortfolioIcon'
 import { SEARCH_PHOTOGRAPHER_BY_ID_URL } from '../../api/apiUrls'
 import { getApiWithAuth } from '../../api/api'
 import './PhotographerPortfolioPage.css'
+import PhotographerCard from '../../components/PhotographerCard'
 
 const PhotographerPortfolioPage = () => {
   const { id } = useParams()
@@ -20,10 +22,10 @@ const PhotographerPortfolioPage = () => {
         const response = await getApiWithAuth(`${SEARCH_PHOTOGRAPHER_BY_ID_URL}/${id}`)
         
         if (response.success) {
-          console.log('Photographer details:', response.data)
-          setPhotographerData(response.data)
+          console.log('Photographer details:', response.data.data)
+          setPhotographerData(response.data.data)
         } else {
-          console.error('Error fetching photographer details:', response.data)
+          console.error('Error fetching photographer details:', response.data.success)
         }
       } catch (error) {
         console.error('Error:', error)
@@ -35,9 +37,9 @@ const PhotographerPortfolioPage = () => {
     }
   }, [id])
 
-  React.useEffect(() => {
-    console.log("Updated photographers:", photographerData);
-  }, [photographerData]);
+  // React.useEffect(() => {
+  //   console.log("Updated photographers:", photographerData);
+  // }, [photographerData]);
 
   if (!photographerData) {
     return (
@@ -55,12 +57,28 @@ const PhotographerPortfolioPage = () => {
     <div className='photographer-portfolio container'>
       <NavBar />
       <div className='main-container'>
-         <img src={avatar} alt='profile-pic'/>
-         <h2>{photographerData.data.full_name}</h2>
-         <p>{`(${photographerData.data.total_reviews})reviews`}</p>
+         <PhotographerCard 
+            key={photographerData.id} 
+            id={photographerData.id}
+            name={photographerData.full_name}
+            rating={photographerData.average_rating}
+            reviewsNo={photographerData.total_reviews}
+            profileImg={photographerData.profile_image_url}
+         />
+         <div className='buttons-container'>
+            <PMButton>
+              <PortfolioIcon />
+              Portfolio
+            </PMButton>
+            <PMButton variant='outline'>
+              <PackageIcon />
+              Package
+            </PMButton>
+         </div>
+
+          
       </div>
     </div>
-        
   )
 }
 

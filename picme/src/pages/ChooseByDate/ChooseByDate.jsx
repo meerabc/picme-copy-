@@ -17,7 +17,7 @@ const ChooseByDate = () => {
   // Dummy values for latitude and longitude
   const [latitude] = React.useState('29.780148267560097')
   const [longitude] = React.useState('-95.3657162519862')
-  const [photographers,setPhotographers] = React.useState([])
+  const [photographersData,setPhotographersData] = React.useState([])
 
   const handleSearch = async () => {
     console.log('Loading...')
@@ -41,24 +41,31 @@ const ChooseByDate = () => {
         
         if (response.success) {
           console.log('Photographers data:', response.data)
-          setPhotographers(response.data)
+          setPhotographersData(response.data)
           setOpen(true) // Open the side container
         } else {
           console.log('Error fetching photographers:', response.data)
-          setPhotographers([])
+          setPhotographersData([])
         }
     } catch (error) {
         console.error('Search error:', error)
-        setPhotographers([])
+        setPhotographersData([])
     }
   }
 
   // React.useEffect(() => {
-  // console.log("Updated photographers:", photographers);
-  // }, [photographers]);
+  // console.log("Updated photographers:", photographersData);
+  // }, [photographersData]);
 
-  const photographerCardElements = photographers.map(photographer=>
-    <PhotographerCard key={photographer.id} item={photographer}/>
+  const photographerCardElements = photographersData.map(photographerData=>
+    <PhotographerCard 
+       key={photographerData.photographer.id} 
+       id={photographerData.photographer.id}
+       isAvailable={photographerData.is_available}
+       name={photographerData.photographer.name}
+       rating={photographerData.photographer.average_rating}
+       reviewsNo={photographerData.photographer.total_reviews}
+       profileImg={photographerData.photographer.avatar_url}/>
   )
   
   return (
@@ -91,7 +98,7 @@ const ChooseByDate = () => {
             <h1>Photographers Lists</h1>
             <p>Find the best photographers in your area for your next event!</p>
             {/* <CategorySelectionField /> */}
-            {photographers.length > 0 ? (
+            {photographersData.length > 0 ? (
                 <div className='cards-container'>
                   {photographerCardElements}
                 </div>
