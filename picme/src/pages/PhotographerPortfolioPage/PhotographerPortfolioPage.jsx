@@ -14,6 +14,19 @@ import PhotographerCard from '../../components/PhotographerCard'
 const PhotographerPortfolioPage = () => {
   const { id } = useParams()
   const [photographerData, setPhotographerData] = React.useState(null)
+  const [categories, setCategories] = React.useState([])
+  const [selectedCategory,setSelectedCategory] = React.useState('all')
+  const [open,setOpen] = React.useState(false)
+  //for categories dropdown
+
+  function handleDropDown(){
+    setOpen(prev=>!prev)
+  }
+
+  function handleCategoryChange(category) {
+    setSelectedCategory(category)
+    setOpen(false)
+  }
 
   React.useEffect(() => {
     const fetchPhotographerDetails = async () => {
@@ -21,10 +34,14 @@ const PhotographerPortfolioPage = () => {
         console.log('Loading photographer details...')
         
         const response = await getApiWithAuth(`${SEARCH_PHOTOGRAPHER_BY_ID_URL}/${id}`)
+      
         
         if (response.success) {
           console.log('Photographer details:', response.data.data)
           setPhotographerData(response.data.data)
+          //photographer categories will be set here
+          const uniqueCategories = response.data.data.work_list.map(work=>work.work_type)
+          setCategories(['all', ...uniqueCategories])
         } else {
           console.error('Error fetching photographer details:', response.data.success)
         }
@@ -37,8 +54,13 @@ const PhotographerPortfolioPage = () => {
       fetchPhotographerDetails()
     }
   }, [id])
+  
+  //dropdown list items
+  const listItems = categories.map(category=>
+    <li key={category} onClick={()=>handleCategoryChange(category)}>{category}</li>
+  )
 
-  const outletContext = {photographerData}
+  const outletContext = {photographerData,selectedCategory}
 
   // React.useEffect(() => {
   //   console.log("Updated photographers:", photographerData);
@@ -78,7 +100,7 @@ const PhotographerPortfolioPage = () => {
               Package
             </PMButton>
          </div>
-         <navbar>
+         <div className='portfolio-navbar-container'>
           <ul className='portfolio-navbar'>
             <li>
                 <NavLink to='.' end>
@@ -96,7 +118,13 @@ const PhotographerPortfolioPage = () => {
                 </NavLink>
               </li>
           </ul>
-         </navbar>
+          <div className='categories-selection-container' onClick={handleDropDown}>
+            <div className='category-selection-div'>
+              {selectedCategory === 'all' ? 'Category type' : selectedCategory}
+              {open && <div className='category-dropdown'>{listItems}</div>}
+            </div>
+          </div>
+         </div>
          <div className='portfolio-outlet-container'>
           <Outlet context={outletContext}/>   
          </div>

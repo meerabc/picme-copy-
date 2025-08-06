@@ -7,7 +7,7 @@
   flex-direction:column;
   align-items:center;
   gap:25px;
-  padding:32px;
+  padding:32px 150px;
 }
 
 .photographer-portfolio .buttons-container{
@@ -50,34 +50,109 @@
   font-size:20px;
 } 
 
-.portfolio-navbar{
+.photographer-portfolio .portfolio-navbar-container{
+  display:flex;
+  justify-content:space-between;
+  width:100%;
+}
+
+.photographer-portfolio .portfolio-navbar{
     display:flex;
     gap:60px;
     height:40px;
 }
 
-.portfolio-navbar > li{
+.photographer-portfolio .portfolio-navbar > li{
     list-style:none;
     height:100%;
 }
 
-.portfolio-navbar > li > a{
+.photographer-portfolio .portfolio-navbar > li > a{
     display:flex;
     text-decoration:none;
     font-size:20px;
-    font-weight:500;
+    font-weight:400;
     color:var(--gray-200);
     height:100%;
     text-transform:uppercase;
 }
 
-.portfolio-navbar > li > a.active{
+.photographer-portfolio .portfolio-navbar > li > a.active{
     color:var(--primary-color);
     border-bottom: 3px solid var(--primary-color)
 }
 
-.portfolio-outlet-container{
+.photographer-portfolio .category-selection-div{
+    font-size:20px;
+    font-weight:400;
+    color:var(--gray-200);
+    height:100%;
+    text-transform:uppercase;
+    cursor:pointer;
+    position:relative;
+    z-index:3;
+}
+
+.photographer-portfolio .category-dropdown{
+  position:absolute;
+  top:50px;
+  left: 50%; /* Start from the middle of parent */
+  transform: translateX(-50%); /* Pull back by half of dropdown's width */
+  min-width: 200px; /* Set a minimum width */
+  width: max-content;
+  padding:7px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  border:1px solid var(--gray-100);
+  border-radius:20px;
+  box-shadow: 0 0 10px 2px rgba(128, 128, 128, 0.3);
+  background-color:var(--secondary-color);
+}
+
+.photographer-portfolio .category-dropdown > li{
+  list-style:none;
+  color:black;
+  font-size:16px;
+  text-transform:none;
+  padding:5px 10px;
+  border-radius:10px;
+  width:310px;
+}
+
+.photographer-portfolio .category-dropdown > li:hover{
+  background-color:var(--gray-100)
+}
+
+.photographer-portfolio .portfolio-outlet-container{
+  width:100%;
+}
+
+.photographer-portfolio .photos-container ,.photographer-portfolio .videos-container{
     display:flex;
     flex-wrap:wrap;
-    gap:10px;
+    gap:25px;
+}
+
+.photographer-portfolio .video-card{
+  position:relative;
+}
+
+.photographer-portfolio .custom-play-button{
+  position:absolute;
+   top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index:2;
+}
+
+
+.photographer-portfolio .no-data-div{
+  width:100%;
+  display:flex;
+  justify-content:center;
+  color:var(--gray-200);
+  font-size:20px;
+  margin-top:30px;
+
 }
