@@ -9,6 +9,9 @@ import WelcomeRoute from './components/WelcomeRoute'
 import HomePage from './pages/HomePage'
 import ChatPage from './pages/ChatPage'
 import ProfilePage from './pages/ProfilePage'
+import PhotosPage from './pages/PhotosPage'
+import VideosPage from './pages/VideosPage'
+import ReviewsPage from './pages/ReviewsPage'
 import ChooseByDate from './pages/ChooseByDate'
 import ChooseByName from './pages/ChooseByName'
 import ChooseByCategory from './pages/ChooseByCategory'
@@ -26,7 +29,11 @@ const App = () => {
           <Route path='/choose-location-by-date' element={<ProtectedRoute> <ChooseByDate /> </ProtectedRoute>} />
           <Route path='/find-by-name' element={<ProtectedRoute> <ChooseByName/> </ProtectedRoute>} />
           <Route path='/find-by-category' element={<ProtectedRoute> <ChooseByCategory /> </ProtectedRoute>} />
-          <Route path='/photographer/portfolio/:id' element={<ProtectedRoute> <PhotographerPortfolioPage /> </ProtectedRoute>} />
+          <Route path='/photographer/portfolio/:id' element={<ProtectedRoute> <PhotographerPortfolioPage /> </ProtectedRoute>}>
+              <Route index element={<PhotosPage />} />
+              <Route path='videos' element={<VideosPage />} />
+              <Route path='reviews' element={<ReviewsPage />} />
+          </Route>
           <Route path='/chat' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
         </Routes>
