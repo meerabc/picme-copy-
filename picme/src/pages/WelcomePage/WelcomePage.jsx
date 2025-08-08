@@ -2,27 +2,20 @@ import FormContainer from '../../components/FormContainer'
 import SideComponent from '../../components/SideComponent'
 import PMButton from '../../components/PMButton'
 import mobileImage from '../../assets/images/mobile-image.png'
-import {useNavigate, useLocation} from 'react-router-dom'
+import {useNavigate} from 'react-router-dom'
 import './WelcomePage.css'
 
 const WelcomePage = () => {
 
   const navigate = useNavigate()
-  const location = useLocation()
-
-  const returnUrl = location.state?.returnUrl
 
   function handleCustomerClick(){
-    navigate('/signup?type=0', { 
-      state: returnUrl ? { returnUrl } : undefined 
-    })
-  }
-  
-  function handlePhotographerClick(){
-    navigate('/signup?type=1', { 
-      state: returnUrl ? { returnUrl } : undefined 
-    })
-  }
+  navigate('/signup?type=0')
+}
+
+function handlePhotographerClick(){
+  navigate('/signup?type=1')
+}
   
 
   return (

@@ -17,7 +17,6 @@ const PhotographerPortfolioPage = () => {
   const [categories, setCategories] = React.useState([])
   const [selectedCategory,setSelectedCategory] = React.useState('all')
   const [open,setOpen] = React.useState(false)
-  //for categories dropdown
 
   function handleDropDown(){
     setOpen(prev=>!prev)
@@ -56,8 +55,8 @@ const PhotographerPortfolioPage = () => {
   }, [id])
   
   //dropdown list items
-  const listItems = categories.map(category=>
-    <li key={category} onClick={()=>handleCategoryChange(category)}>{category}</li>
+  const listItems = categories.map((category,index)=>
+    <li key={index} onClick={()=>handleCategoryChange(category)}>{category}</li>
   )
 
   const outletContext = {photographerData,selectedCategory}
@@ -121,6 +120,7 @@ const PhotographerPortfolioPage = () => {
           <div className='categories-selection-container' onClick={handleDropDown}>
             <div className='category-selection-div'>
               {selectedCategory === 'all' ? 'Category type' : selectedCategory}
+              {/* conditionally rendering dropdown */}
               {open && <div className='category-dropdown'>{listItems}</div>}
             </div>
           </div>

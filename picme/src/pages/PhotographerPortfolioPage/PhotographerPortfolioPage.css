@@ -7,12 +7,17 @@
   flex-direction:column;
   align-items:center;
   gap:25px;
-  padding:32px 150px;
+  padding:32px;
+  padding:32px;
 }
 
 .photographer-portfolio .buttons-container{
     display:flex;
     gap:20px;
+}
+
+.photographer-portfolio .buttons-container button {
+  width:154px;
 }
 
 /* for PhotographerCard.jsx */
@@ -52,8 +57,12 @@
 
 .photographer-portfolio .portfolio-navbar-container{
   display:flex;
+  flex-wrap:wrap;
+  gap:15px;
   justify-content:space-between;
   width:100%;
+  padding:0 150px;
+  font-size:20px;
 }
 
 .photographer-portfolio .portfolio-navbar{
@@ -70,7 +79,6 @@
 .photographer-portfolio .portfolio-navbar > li > a{
     display:flex;
     text-decoration:none;
-    font-size:20px;
     font-weight:400;
     color:var(--gray-200);
     height:100%;
@@ -83,7 +91,6 @@
 }
 
 .photographer-portfolio .category-selection-div{
-    font-size:20px;
     font-weight:400;
     color:var(--gray-200);
     height:100%;
@@ -156,3 +163,28 @@
   margin-top:30px;
 
 }
+
+@media(max-width:975px){
+  .photographer-portfolio .portfolio-navbar-container{
+  flex-direction:column-reverse;
+  align-items:center;
+  padding:0;
+  }
+  .photographer-portfolio .portfolio-navbar{
+  flex-wrap:wrap;
+  }
+}
+
+@media(max-width:450px){
+  .photographer-portfolio .portfolio-navbar-container{
+  font-size:15px;
+  
+  }
+  .photographer-portfolio .portfolio-navbar{
+    gap:12px;
+  }
+  .photographer-portfolio .buttons-container{
+    flex-direction:column;
+  }
+}
+

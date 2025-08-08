@@ -1,5 +1,5 @@
 import React from 'react'
-import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
+import { useSearchParams, useNavigate} from 'react-router-dom'
 import FormContainer from '../../components/FormContainer'
 import SideComponent from '../../components/SideComponent'
 import PMButton from '../../components/PMButton'
@@ -23,11 +23,7 @@ const SignInPage = () => {
 
   const [searchParams]=useSearchParams()
   const navigate = useNavigate()
-  const location = useLocation()
   const userType = searchParams.get('type')
-
-  //Gets return URL from location state (if user was redirected here)
-  const returnUrl = location.state?.returnUrl || '/choose-location'
 
   const [formData,setFormData] = React.useState({
     email:'',
@@ -128,7 +124,7 @@ const SignInPage = () => {
         console.log('Login successful for user type:', userType === '0' ? 'Customer' : 'Photographer')
         console.log(getAccessToken())
        
-        navigate(returnUrl)
+        navigate('/choose-location')
         
       } else {
         console.log('Login error:', response.data)
@@ -182,7 +178,7 @@ const SignInPage = () => {
             </div>
             <LoginWithButton icon={<GoogleIcon/>}>Login with Google</LoginWithButton>
             <LoginWithButton icon={<FaceBookIcon/>}>Login with Facebook</LoginWithButton>
-            <p className='sign-up-div' onClick={()=>navigate(`/signup?type=${userType}`,{ state: { returnUrl } })}>Don't have an account?
+            <p className='sign-up-div' onClick={()=>navigate(`/signup?type=${userType}`)}>Don't have an account?
               <span> Sign up</span>
             </p>
        </FormContainer>

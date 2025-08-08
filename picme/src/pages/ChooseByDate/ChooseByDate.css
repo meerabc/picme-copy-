@@ -69,4 +69,20 @@
 .choose-by-date-page .cards-container{
     display:flex;
     justify-content:space-between;
+    gap:25px;
 }
+
+.choose-by-date-page .photographer-card{
+    flex:1;
+}
+
+@media(max-width:770px){
+  .choose-by-date-page .main-container{
+    flex-direction:column;
+}
+
+.choose-by-date-page .side-container{
+    width:100%;
+}
+}
+

@@ -13,7 +13,7 @@ import LoginWithButton from '../../components/LoginWithButton'
 import GoogleIcon from '../../assets/icons/GoogleIcon'
 import FaceBookIcon from '../../assets/icons/FaceBookIcon'
 import { validateEmail, validatePassword, validateFullName1To3Words } from '../../utils/helper'
-import { useSearchParams, useNavigate, useLocation } from 'react-router-dom'
+import { useSearchParams, useNavigate } from 'react-router-dom'
 import { postAPIWithoutAuth } from '../../api/api'
 import { SIGNUP_URL } from '../../api/apiUrls'
 import { setAccessToken } from '../../utils/localStorage'
@@ -23,12 +23,8 @@ const SignUpPage = () => {
 
   const [searchParams]=useSearchParams()
   const navigate = useNavigate()
-  const location = useLocation()
   const userType = searchParams.get('type')
-
-  //Gets return URL from location state (if user was redirected here)
-  const returnUrl = location.state?.returnUrl || '/choose-location'
-
+  
   //form data state
   const [formData,setFormData] = React.useState(
     {
@@ -153,7 +149,7 @@ const SignUpPage = () => {
         }
 
         // Navigate to the expected page
-        navigate(returnUrl)
+        navigate('/choose-location')
       } else {
         // Throw error to be caught by catch block
         throw new Error(response.data?.message || 'Signup failed')
@@ -214,7 +210,7 @@ const SignUpPage = () => {
         <LoginWithButton icon={<GoogleIcon/>}>Login with Google</LoginWithButton>
         <LoginWithButton icon={<FaceBookIcon/>}>Login with Facebook</LoginWithButton>
         <p className='login-div' 
-           onClick={()=>navigate(`/signin?type=${userType}`,{ state: { returnUrl } })}
+           onClick={()=>navigate(`/signin?type=${userType}`)}
         >
           Already have an account?
           <span> Log in</span>
