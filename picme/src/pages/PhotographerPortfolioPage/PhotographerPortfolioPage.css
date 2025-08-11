@@ -135,10 +135,15 @@
   width:100%;
 }
 
-.photographer-portfolio .photos-container ,.photographer-portfolio .videos-container{
+.photographer-portfolio .photos-container ,.photographer-portfolio .videos-container, .photographer-portfolio .reviews-container{
     display:flex;
     flex-wrap:wrap;
     gap:25px;
+    padding:0 150px;
+}
+
+.photographer-portfolio .reviews-container{
+  gap:10px;
 }
 
 .photographer-portfolio .video-card{
@@ -173,6 +178,10 @@
   .photographer-portfolio .portfolio-navbar{
   flex-wrap:wrap;
   }
+  .photographer-portfolio .photos-container ,.photographer-portfolio .videos-container, .photographer-portfolio .reviews-container{
+    padding:0;
+  }
+
 }
 
 @media(max-width:450px){

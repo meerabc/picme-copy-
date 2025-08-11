@@ -56,7 +56,12 @@ const PhotographerPortfolioPage = () => {
   
   //dropdown list items
   const listItems = categories.map((category,index)=>
-    <li key={index} onClick={()=>handleCategoryChange(category)}>{category}</li>
+    <li key={index} 
+        onClick={(e)=>{
+          e.stopPropagation()
+          handleCategoryChange(category)}}>
+            {category}
+    </li>
   )
 
   const outletContext = {photographerData,selectedCategory}

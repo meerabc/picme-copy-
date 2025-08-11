@@ -1,1 +1,1 @@
-export {default} from './PhotographerPortfolioPage'
+export {default} from './PhotographerPage'

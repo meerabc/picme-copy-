@@ -371,7 +371,7 @@ button.login-with-button > svg{
   height:100%;
 }
 
-/* for ImagesCard.jsx */
+/* for ImageCard.jsx */
 .img-card{
   height:157px;
   width:166.7px;
@@ -384,6 +384,64 @@ button.login-with-button > svg{
   border-radius:10px;
 }
 
+/* for ReviewCard.jsx */
+.review-card{
+  display:flex;
+  gap:10px;
+  padding:15px 25px;
+  width:300px;
+  border: 1.02px solid rgba(228, 228, 228, 0.2);
+}
+
+.review-card:hover{
+  background-color:var(--gray-100);
+}
+
+.profile-pic{
+  height:34px;
+  width:34px;
+}
+
+.profile-pic > img{
+  height:100%;
+  width:100%;
+}
+
+.review-container{
+  display:flex;
+  flex-direction:column;
+  gap:5px;
+  width:100%
+}
+
+.name-div{
+  width:100%;
+  display:flex;
+  justify-content:space-between;
+}
+
+.reviewer-name{
+  font-size:18px;
+  color:var(--heading-color);
+  font-weight:500;
+}
+
+.review-date{
+  font-size:14px;
+  font-weight:400;
+  color:var(--gray-200);
+}
+
+.ratings > svg{
+  width:19px;
+  height:19px;
+}
+
+.comment{
+  font-size:14px;
+  font-weight:400;
+  color:var(--gray-200);
+}
 
 @media(max-width:1100px){
   .side-component{
