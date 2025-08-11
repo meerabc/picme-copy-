@@ -1,21 +1,23 @@
 import React from 'react'
-import { Outlet, useParams } from 'react-router-dom'
+import { Outlet, useParams, useNavigate, NavLink } from 'react-router-dom'
 import NavBar from '../../components/NavBar'
 import BackButton from '../../components/BackButton'
 import PMButton from '../../components/PMButton'
+import PhotographerCard from '../../components/PhotographerCard'
 import PackageIcon from '../../assets/icons/PackageIcon'
 import PortfolioIcon from '../../assets/icons/PortfolioIcon'
 import { SEARCH_PHOTOGRAPHER_BY_ID_URL } from '../../api/apiUrls'
 import { getApiWithAuth } from '../../api/api'
-import { NavLink } from 'react-router-dom'
 import './PhotographerPortfolioPage.css'
-import PhotographerCard from '../../components/PhotographerCard'
+
 
 const PhotographerPortfolioPage = () => {
   const { id } = useParams()
+  const navigate = useNavigate()
   const [photographerData, setPhotographerData] = React.useState(null)
   const [categories, setCategories] = React.useState([])
   const [selectedCategory,setSelectedCategory] = React.useState('all')
+  //for categories dropdown
   const [open,setOpen] = React.useState(false)
 
   function handleDropDown(){
@@ -95,11 +97,11 @@ const PhotographerPortfolioPage = () => {
             profileImg={photographerData.profile_image_url}
          />
          <div className='buttons-container'>
-            <PMButton>
+            <PMButton onClick={()=>navigate('.')}>
               <PortfolioIcon />
               Portfolio
             </PMButton>
-            <PMButton variant='outline'>
+            <PMButton variant='outline' onClick={()=>navigate(`/photographer/packages/${id}`)}>
               <PackageIcon />
               Package
             </PMButton>

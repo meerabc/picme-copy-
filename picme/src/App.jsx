@@ -16,6 +16,7 @@ import ChooseByDate from './pages/ChooseByDate'
 import ChooseByName from './pages/ChooseByName'
 import ChooseByCategory from './pages/ChooseByCategory'
 import PhotographerPortfolioPage from './pages/PhotographerPortfolioPage'
+import PhotographerPackagesPage from './pages/PhotographerPackagesPage'
 import { BrowserRouter, Routes, Route, Link } from "react-router-dom"
 
 const App = () => {
@@ -34,6 +35,7 @@ const App = () => {
               <Route path='videos' element={<VideosPage />} />
               <Route path='reviews' element={<ReviewsPage />} />
           </Route>
+          <Route path='/photographer/packages/:id' element={<ProtectedRoute> <PhotographerPackagesPage /> </ProtectedRoute>} />
           <Route path='/chat' element={<ProtectedRoute> <ChatPage /> </ProtectedRoute>} />
           <Route path='/profile' element={<ProtectedRoute> <ProfilePage /> </ProtectedRoute>} />
         </Routes>
