@@ -7,8 +7,7 @@
   flex-direction:column;
   align-items:center;
   gap:25px;
-  padding:32px;
-  padding:32px;
+  padding:32px 182px;
 }
 
 .photographer-portfolio .buttons-container{
@@ -44,7 +43,6 @@
 .photographer-portfolio .avatar-container{
   height:132.52px;
   width:132.52px;
-  /* margin-bottom:5px; */
 }
 
 .photographer-portfolio .name{
@@ -61,7 +59,6 @@
   gap:15px;
   justify-content:space-between;
   width:100%;
-  padding:0 150px;
   font-size:20px;
   margin-top:35px;
 }
@@ -140,7 +137,6 @@
     display:flex;
     flex-wrap:wrap;
     gap:25px;
-    padding:0 150px;
 }
 
 .photographer-portfolio .reviews-container{
@@ -167,27 +163,23 @@
   color:var(--gray-200);
   font-size:20px;
   margin-top:30px;
-
 }
 
 @media(max-width:975px){
-  .photographer-portfolio .portfolio-navbar-container{
-  flex-direction:column-reverse;
-  align-items:center;
-  padding:0;
+  .photographer-portfolio .main-container{
+    padding:32px 50px;
   }
-  .photographer-portfolio .portfolio-navbar{
-  flex-wrap:wrap;
-  }
-  .photographer-portfolio .photos-container ,.photographer-portfolio .videos-container, .photographer-portfolio .reviews-container{
-    padding:0;
-  }
-
 }
 
 @media(max-width:450px){
+  .photographer-portfolio .main-container{
+    padding:32px 20px;
+  }
+
   .photographer-portfolio .portfolio-navbar-container{
   font-size:15px;
+  flex-direction:column;
+  align-items:center;
   
   }
   .photographer-portfolio .portfolio-navbar{

@@ -62,6 +62,7 @@ button{
 }
 
 button.filled{
+  border: 1px solid var(--secondary-color);
   background-color:var(--primary-color);
   color:var(--secondary-color);
   text-transform:uppercase;
@@ -443,6 +444,66 @@ button.login-with-button > svg{
   color:var(--gray-200);
 }
 
+/* for PackageCard.jsx */
+.package-card{
+  background-color:#1ACEEF;
+  color:var(--secondary-color);
+  gap:10px;
+  padding:15px;
+  border-radius:12px;
+  width:325px;
+  height:358px;
+}
+
+.package-card .content{
+  height:100%;
+  display:flex;
+  flex-direction:column;
+  justify-content:space-between;
+}
+
+.package-card .description {
+  list-style-position: inside;
+}
+
+.package-card .description > li{
+  font-size:16px;
+  font-weight:400;
+}
+
+.icon-container{
+  width:100%;
+  display:flex;
+  justify-content:flex-end;
+}
+
+.package-card .main-info{
+  width:100%;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.package-card .package-name{
+  font-size:20px;
+  font-weight:500;
+}
+
+.package-card .price{
+  font-size:28px;
+  font-weight:600;
+}
+
+.icon-container > svg{
+  width:30px;
+  height:27px;
+}
+
+.package-card button{
+  width:100%;
+  background-color:#1ACEEF;
+}
+
 @media(max-width:1100px){
   .side-component{
   width:40vw;
@@ -452,6 +513,67 @@ button.login-with-button > svg{
 @media(max-width:880px){
   .side-component{
   width:30vw;
+  }
+}
+
+@media(max-width:770px){
+
+  .main-container{
+    margin-bottom:72px;
+  }
+  .navbar{
+    width:100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    justify-content:center;
+    background-color:var(--secondary-color);
+    padding:12px 0;
+  }
+
+  .nav-logo-container{
+    display:none;
+  }
+
+  .nav-menu{
+    width:100%;
+    justify-content:space-around;
+  }
+/* 
+  .nav-menu > li {
+      padding:10px 0;
+  } */
+
+  .nav-menu > li > a {
+    flex-direction:column;
+    font-size:12px;
+    font-weight:400;
+    /* align-items:center; */
+    color:#9E9E9E;
+    gap:2px;
+    padding:10px 0;
+  }
+
+  .nav-menu > li > a > svg {
+    width:18px;
+    height:18px;
+  }
+
+  .nav-menu > li > a > svg path{
+    fill:#9E9E9E;
+  }
+
+  .nav-menu > li:hover {
+      color:var(--primary-color);
+  }
+  
+    .nav-menu > li > a.active {
+    color:var(--primary-color);
+    border-bottom:2px solid var(--primary-color);
+  }
+
+  .nav-menu > li > a.active > svg path {
+  fill: var(--primary-color);
   }
 }
 
@@ -465,9 +587,9 @@ button.login-with-button > svg{
     margin:0;
   }
   .form-container > img{
-  position:static;
-  margin:0 auto;
-  width:100px;
+    position:static;
+    margin:0 auto;
+    width:100px;
   }
   .back-button{
       display:block;

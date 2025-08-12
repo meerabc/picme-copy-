@@ -1,83 +1,80 @@
-.photographer-portfolio.content{
+.photographer-packages.content{
   display:flex; 
 }
 
-.photographer-portfolio .main-container{
+.photographer-packages .main-container{
   display:flex;
   flex-direction:column;
   align-items:center;
   gap:25px;
-  padding:32px;
-  padding:32px;
+  padding:32px 182px;
 }
 
-.photographer-portfolio .buttons-container{
+.photographer-packages .buttons-container{
     display:flex;
     gap:20px;
 }
 
-.photographer-portfolio .buttons-container button {
+.photographer-packages .buttons-container button {
   width:154px;
 }
 
 /* for PhotographerCard.jsx */
-.photographer-portfolio .photographer-card{
+.photographer-packages .photographer-card{
   width:auto;
   height:auto;
   border:none;
 }
 
-.photographer-portfolio .ratings-container > svg{
+.photographer-packages .ratings-container > svg{
   width:21.68px;
   height:21.86px;
 }
 
-.photographer-portfolio .ratings{
+.photographer-packages .ratings{
   size:20px;
 }
 
-.photographer-portfolio .reviews{
+.photographer-packages .reviews{
   font-size:16px;
 
 }
 
-.photographer-portfolio .avatar-container{
+.photographer-packages .avatar-container{
   height:132.52px;
   width:132.52px;
-  /* margin-bottom:5px; */
 }
 
-.photographer-portfolio .name{
+.photographer-packages .name{
   font-size:32px;
 }
 
-.photographer-portfolio .title{
+.photographer-packages .title{
   font-size:20px;
 } 
 
-.photographer-portfolio .portfolio-navbar-container{
+.photographer-packages .portfolio-navbar-container{
   display:flex;
   flex-wrap:wrap;
   gap:15px;
   justify-content:space-between;
   width:100%;
-  padding:0 150px;
   font-size:20px;
   margin-top:35px;
 }
 
-.photographer-portfolio .portfolio-navbar{
+.photographer-packages .portfolio-navbar{
     display:flex;
     gap:60px;
     height:40px;
 }
 
-.photographer-portfolio .portfolio-navbar > li{
+.photographer-packages .portfolio-navbar > li{
     list-style:none;
     height:100%;
 }
 
-.photographer-portfolio .portfolio-navbar > li > a{
+.photographer-packages .portfolio-navbar > li > a{
     display:flex;
     text-decoration:none;
     font-weight:400;
@@ -86,115 +83,52 @@
     text-transform:uppercase;
 }
 
-.photographer-portfolio .portfolio-navbar > li > a.active{
+.photographer-packages .portfolio-navbar > li > a.active{
     color:var(--primary-color);
     border-bottom: 3px solid var(--primary-color)
 }
 
-.photographer-portfolio .category-selection-div{
-    font-weight:400;
-    color:var(--gray-200);
-    height:100%;
-    text-transform:uppercase;
-    cursor:pointer;
-    position:relative;
-    z-index:3;
-}
-
-.photographer-portfolio .category-dropdown{
-  position:absolute;
-  top:50px;
-  left: 50%; /* Start from the middle of parent */
-  transform: translateX(-50%); /* Pull back by half of dropdown's width */
-  min-width: 200px; /* Set a minimum width */
-  width: max-content;
-  padding:7px;
-  display:flex;
-  flex-direction:column;
-  gap:10px;
-  border:1px solid var(--gray-100);
-  border-radius:20px;
-  box-shadow: 0 0 10px 2px rgba(128, 128, 128, 0.3);
-  background-color:var(--secondary-color);
-}
-
-.photographer-portfolio .category-dropdown > li{
-  list-style:none;
-  color:black;
-  font-size:16px;
-  text-transform:none;
-  padding:5px 10px;
-  border-radius:10px;
-  width:310px;
-}
-
-.photographer-portfolio .category-dropdown > li:hover{
-  background-color:var(--gray-100)
-}
-
-.photographer-portfolio .portfolio-outlet-container{
-  width:100%;
-}
-
-.photographer-portfolio .photos-container ,.photographer-portfolio .videos-container, .photographer-portfolio .reviews-container{
+.photographer-packages .packages-container{
     display:flex;
     flex-wrap:wrap;
     gap:25px;
-    padding:0 150px;
+    justify-content:center;
 }
 
-.photographer-portfolio .reviews-container{
-  gap:10px;
-}
-
-.photographer-portfolio .video-card{
-  position:relative;
-}
-
-.photographer-portfolio .custom-play-button{
-  position:absolute;
-   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index:2;
-}
-
-
-.photographer-portfolio .no-data-div{
+.photographer-packages .no-data-div{
   width:100%;
   display:flex;
   justify-content:center;
   color:var(--gray-200);
   font-size:20px;
   margin-top:30px;
-
 }
 
 @media(max-width:975px){
-  .photographer-portfolio .portfolio-navbar-container{
-  flex-direction:column-reverse;
-  align-items:center;
-  padding:0;
+  .photographer-packages .main-container{
+    padding:32px 50px;
   }
-  .photographer-portfolio .portfolio-navbar{
-  flex-wrap:wrap;
-  }
-  .photographer-portfolio .photos-container ,.photographer-portfolio .videos-container, .photographer-portfolio .reviews-container{
-    padding:0;
-  }
-
 }
 
 @media(max-width:450px){
-  .photographer-portfolio .portfolio-navbar-container{
+  .photographer-packages .main-container{
+    padding:32px 20px;
+  }
+
+  .photographer-packages .portfolio-navbar-container{
   font-size:15px;
+  flex-direction:column;
+  align-items:center;
   
   }
-  .photographer-portfolio .portfolio-navbar{
+  .photographer-packages .portfolio-navbar{
     gap:12px;
   }
-  .photographer-portfolio .buttons-container{
+  .photographer-packages .buttons-container{
     flex-direction:column;
+  }
+  .photographer-packages .package-card{
+    width:250px;
   }
 }
 

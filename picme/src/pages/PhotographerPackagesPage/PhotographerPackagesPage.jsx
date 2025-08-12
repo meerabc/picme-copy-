@@ -6,17 +6,17 @@ import PMButton from '../../components/PMButton'
 import PackageIcon from '../../assets/icons/PackageIcon'
 import PhotographerCard from '../../components/PhotographerCard'
 import PortfolioIcon from '../../assets/icons/PortfolioIcon'
-import { SEARCH_PHOTOGRAPHER_BY_ID_URL } from '../../api/apiUrls'
+import PackageCard from '../../components/PackageCard'
+import { SEARCH_PHOTOGRAPHER_BY_ID_URL, GET_PACKAGES_URL } from '../../api/apiUrls'
 import { getApiWithAuth } from '../../api/api'
 import './PhotographerPackagesPage.css'
 
-
 const PhotographerPackagesPage = () => {
-
   const { id } = useParams()
   const navigate = useNavigate()
-  // const [packages, setPackages] = React.useState(null)
+  const [packages, setPackages] = React.useState([])
   const [photographerData, setPhotographerData] = React.useState(null)
+  const [packagesLoading, setPackagesLoading] = React.useState(true)
 
   React.useEffect(() => {
     const fetchPhotographerDetails = async () => {
@@ -42,8 +42,36 @@ const PhotographerPackagesPage = () => {
   }, [id])
 
   React.useEffect(() => {
-    console.log("Updated photographers:", photographerData);
-  }, [photographerData]);
+    const fetchPackages = async () => {
+      if (!id) return
+      
+      try {
+        setPackagesLoading(true)
+        console.log('Loading packages...')
+        
+        const response = await getApiWithAuth(`${GET_PACKAGES_URL}?photographer_id=${id}`)
+        
+        if (response.success && response.data?.data) {
+          console.log('Packages data:', response.data.data)
+          setPackages(response.data.data)
+        } else {
+          console.error('Error fetching packages:', response.data)
+          setPackages([])
+        }
+      } catch (error) {
+        console.error('Error fetching packages:', error)
+        setPackages([])
+      } finally {
+        setPackagesLoading(false)
+      }
+    }
+
+    fetchPackages()
+  }, [id])
+
+  React.useEffect(() => {
+    console.log("Photographer packages:", packages);
+  }, [packages]);
 
   if (!photographerData) {
     return (
@@ -57,8 +85,15 @@ const PhotographerPackagesPage = () => {
     )
   }
 
+  const packageCardElements = packages.map(packageData => (
+    <PackageCard 
+      key={packageData.id}
+      packageData={packageData}
+    />
+  ))
+
   return (
-    <div className='photographer-portfolio container'>
+    <div className='photographer-packages container'>
       <NavBar />
       <div className='main-container'>
          <PhotographerCard 
@@ -87,6 +122,22 @@ const PhotographerPackagesPage = () => {
                 </NavLink>
               </li>
           </ul>
+         </div>
+         
+         <div>
+           {packagesLoading ? (
+             <div className='no-data-div'>
+               Loading packages...
+             </div>
+           ) : packages.length === 0 ? (
+             <div className='no-data-div'>
+               No packages available
+             </div>
+           ) : (
+             <div className='packages-container'>
+               {packageCardElements}
+             </div>
+           )}
          </div>
       </div>
     </div>

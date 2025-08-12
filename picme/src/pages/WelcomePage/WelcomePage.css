@@ -37,8 +37,14 @@
         color:var(--secondary-color);
         text-align:center;
     }
+    .welcome-page .form-content > h1 > span{
+        color:var(--secondary-color)
+    }
     .welcome-page .form-content > button{
         background-color:var(--secondary-color);
         color:var(--primary-color);
     } 
+    .welcome-page .side-component{
+        display:none;
+    }
 }
